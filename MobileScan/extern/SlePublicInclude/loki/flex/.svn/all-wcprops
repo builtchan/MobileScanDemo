@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex
+END
+flex_string_details.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/flex_string_details.h
+END
+flex_string_shell.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/flex_string_shell.h
+END
+allocatorstringstorage.h
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/allocatorstringstorage.h
+END
+vectorstringstorage.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/vectorstringstorage.h
+END
+cowstringopt.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/cowstringopt.h
+END
+smallstringopt.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/smallstringopt.h
+END
+flex_string.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/flex_string.h
+END
+simplestringstorage.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/loki/flex/simplestringstorage.h
+END

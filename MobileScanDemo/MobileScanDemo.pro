@@ -3,10 +3,12 @@
 # -------------------------------------------------
 QT += core \
     gui \
-    widgets
+    widgets \
+    xml
 LIBS += /Afc/Run/Lib/libMobileScan.so \
     /Afc/Run/Lib/libDllCLogOper.so \
-    /Afc/Run/Lib/libLoki.so
+    /Afc/Run/Lib/libLoki.so \
+    /Afc/Run/Lib/libQRCodeCreate.so
 INCLUDEPATH += Include \
     Include/soap \
     SlePublicInclude \
@@ -86,6 +88,8 @@ HEADERS += MobileScan.h \
     Interface/IDeviceCommonFunction.h \
     Include/CLogOper2.h \
     Include/CLogOper.h \
-    Interface/IProgressReport.h
+    Interface/IProgressReport.h \
+    Include/qrencode.h \
+    Include/qrcodecreate.h
 SOURCES += MobileScan.cpp \
     main.cpp

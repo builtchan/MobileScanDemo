@@ -1,0 +1,9 @@
+K 13
+svn:externals
+V 202
+../../../LibProject/DllCLogOper/include DllCLogOper
+../../../LibProject/SlePublic/include SlePublicInclude
+../../../LibProject/Ipc/include Ipc
+../../../LibProject/SlePublic/interface SlePublicInterface
+
+END

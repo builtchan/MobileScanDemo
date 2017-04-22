@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/CssAfcSleV41/!svn/ver/26348/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include
+END
+SlePublicFunc.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/CssAfcSleV41/!svn/ver/20165/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/SlePublicFunc.h
+END
+AfcErrorCode.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/22664/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/AfcErrorCode.h
+END
+BomIpcMsgDef.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/25757/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/BomIpcMsgDef.h
+END
+PubSleDb.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/CssAfcSleV41/!svn/ver/5501/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/PubSleDb.h
+END
+PubNtpSyncClockDef.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/CssAfcSleV41/!svn/ver/9082/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/PubNtpSyncClockDef.h
+END
+qrencode.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/CssAfcSleV41/!svn/ver/15004/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/qrencode.h
+END
+AfcStatusTable.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/CssAfcSleV41/!svn/ver/22664/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/AfcStatusTable.h
+END
+PubXml.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/CssAfcSleV41/!svn/ver/9170/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/PubXml.h
+END
+CashAndTicketContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/26348/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/CashAndTicketContainer.h
+END
+MD5Checksum.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/10086/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/MD5Checksum.h
+END
+WavPlayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/CssAfcSleV41/!svn/ver/12119/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/WavPlayer.h
+END
+MaintainTestPublicDef.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/17551/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/MaintainTestPublicDef.h
+END
+PubComApi.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/PubComApi.h
+END
+AfcTpuPublic.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/21826/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/AfcTpuPublic.h
+END
+PubNtpSyncClock.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/CssAfcSleV41/!svn/ver/9082/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/PubNtpSyncClock.h
+END
+BomPublicDataInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/CssAfcSleV41/!svn/ver/25771/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/BomPublicDataInfo.h
+END
+synclock.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/CssAfcSleV41/!svn/ver/13037/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/synclock.h
+END
+SleParamAttriDefPublic.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/26079/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/SleParamAttriDefPublic.h
+END
+DataDef.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/CssAfcSleV41/!svn/ver/26322/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/DataDef.h
+END
+AfcPublic.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/CssAfcSleV41/!svn/ver/26344/CssAfcSle/Develop/Trunk/LibProject/SlePublic/include/AfcPublic.h
+END

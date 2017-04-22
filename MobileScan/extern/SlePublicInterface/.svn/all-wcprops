@@ -1,0 +1,227 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/CssAfcSleV41/!svn/ver/26344/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface
+END
+ISvtPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISvtPaymentFunction.h
+END
+IOtherPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IOtherPaymentFunction.h
+END
+IRfidReaderCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IRfidReaderCommonFunction.h
+END
+IAgUiApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IAgUiApp.h
+END
+IIssueEventHandler.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/13218/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IIssueEventHandler.h
+END
+IAfcApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IAfcApp.h
+END
+ICashCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/19801/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ICashCommonFunction.h
+END
+ITvmPaymentAndChangeApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/CssAfcSleV41/!svn/ver/25956/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ITvmPaymentAndChangeApp.h
+END
+IWithdrawCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/CssAfcSleV41/!svn/ver/22608/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IWithdrawCommonFunction.h
+END
+IBankCardPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IBankCardPaymentFunction.h
+END
+ISleEnvironmentApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/26344/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISleEnvironmentApp.h
+END
+INfcPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/INfcPaymentFunction.h
+END
+ISleProjectApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/26094/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISleProjectApp.h
+END
+ISleBizDataGenApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/CssAfcSleV41/!svn/ver/21857/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISleBizDataGenApp.h
+END
+ISleDataApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/CssAfcSleV41/!svn/ver/26143/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISleDataApp.h
+END
+ICashEventHandler.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/CssAfcSleV41/!svn/ver/22493/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ICashEventHandler.h
+END
+IVoucherPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IVoucherPaymentFunction.h
+END
+IWebPaymentFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IWebPaymentFunction.h
+END
+ITvmDioCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/CssAfcSleV41/!svn/ver/23512/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ITvmDioCommonFunction.h
+END
+ILedCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/23946/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ILedCommonFunction.h
+END
+ISleStateApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/CssAfcSleV41/!svn/ver/22664/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ISleStateApp.h
+END
+IUpsCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/18469/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IUpsCommonFunction.h
+END
+ITPUCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/CssAfcSleV41/!svn/ver/21287/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ITPUCommonFunction.h
+END
+IGateWithDioCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IGateWithDioCommonFunction.h
+END
+IWithdrawEventHandler.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/5716/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IWithdrawEventHandler.h
+END
+IAgGateApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IAgGateApp.h
+END
+IAgTicketHandlerApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/22267/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IAgTicketHandlerApp.h
+END
+IProgressReport.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/5264/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IProgressReport.h
+END
+IPrinterCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IPrinterCommonFunction.h
+END
+IAgDioCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IAgDioCommonFunction.h
+END
+IRfidCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/21460/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IRfidCommonFunction.h
+END
+ITvmUiApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/23102/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ITvmUiApp.h
+END
+IUpsEventHandler.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/CssAfcSleV41/!svn/ver/22486/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IUpsEventHandler.h
+END
+IIssueCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/18327/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IIssueCommonFunction.h
+END
+ITvmTicketHandlerApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/18697/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/ITvmTicketHandlerApp.h
+END
+IDIOEventHandler.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/CssAfcSleV41/!svn/ver/22665/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IDIOEventHandler.h
+END
+IDeviceCommonFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/CssAfcSleV41/!svn/ver/8635/CssAfcSle/Develop/Trunk/LibProject/SlePublic/interface/IDeviceCommonFunction.h
+END

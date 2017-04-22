@@ -1,0 +1,375 @@
+/*
+ * SleParamAttriDef.h
+ *
+ *  Created on: Jan 14, 2015
+ *      Author: root
+ */
+
+#ifndef _SLE_PARAM_ATTRI_DEF_PUBLIC_H_
+#define _SLE_PARAM_ATTRI_DEF_PUBLIC_H_
+
+/*参数大类型*/
+typedef enum
+{
+	EM_ENV_PARAM_TYPE = 1,    //环境参数
+	EM_SPEC_PARAM_TYPE = 2,    //特殊参数
+	EM_STANDARD_PARAM_TYPE = 3,    //标准参数
+}EM_PARAM_TYPE_DEF;
+
+/*闸门工作类型定义    added by wangzp */
+typedef enum
+{
+	EM_DOOR_WORK_MODE_ALWAYS_ON = 1, //常开
+	EM_DOOR_WORK_MODE_ALWAYS_OFF = 2, //常闭
+}EM_DOOR_WORK_MODE_TYPE;
+
+/* 登录验证模式：1 SC完全验证； 2 SLE完全验证 ；  3 SLE、SC同时验证 */
+typedef enum
+{
+   //仅通过SC进行验证
+   EM_LOGIN_VERIFY_MODE_JUST_BY_SC = 1,
+
+   //仅通过SLE进行验证
+   EM_LOGIN_VERIFY_MODE_JUST_BY_SLE = 2,
+
+   //通过SC与SLE同时验证
+   EM_LOGIN_VERIFY_MODE_SC_AND_SLE =3,
+
+}EM_LOGIN_VERIFY_MODE;
+
+
+
+/* 参数下载方式 */
+typedef enum
+{
+	//无条件下载，即版本相同也进行下载
+	EM_PARAM_DOWNLOAD_MODE_UNCONDITIONAL = 0xA1,
+
+	//版本不同就下载
+	EM_PARAM_DOWNLOAD_MODE_DIFF_VERSION = 0xA2,
+
+	//版本升高才下载
+	EM_PARAM_DOWNLOAD_MODE_HIGHER = 0xA3,
+
+}EM_PARAM_DOWNLOAD_MODE;
+
+
+/*! \brief 定义枚举型的数据结构DEVICE_SUB_TYPE
+* 	定义AFC设备子类型
+*/
+typedef enum
+{
+	AG_PHYSICAL_TYPE_STANDARD_ENTRY = 0x01,					/*!<标准进站AG*/
+	AG_PHYSICAL_TYPE_STANDARD_EXIT = 0x02,					/*!<标准出站AG*/
+	AG_PHYSICAL_TYPE_STANDARD_ENTRY_AND_EXIT = 0x03, 		/*!<标准双向AG*/
+	AG_PHYSICAL_TYPE_WIDE_CHUNNEL_ENTRY = 0x04,				/*!<宽通道进站AG*/
+	AG_PHYSICAL_TYPE_WIDE_CHUNNEL_EXIT  = 0x05,				/*!<宽通道出站AG*/
+	AG_PHYSICAL_TYPE_WIDE_CHUNNEL_ENTRY_AND_EXIT = 0x06,	/*!<宽通道双向AG*/
+
+}EM_AG_PHYSICAL_TYPE;
+
+
+/* 闸机通行方向： 主要针对双向AG，用于存储其实际的设置的通道方向 */
+typedef enum
+{
+	//通道模式状态值	通道模式状态名称
+	EM_AG_CHANNEL_DIRECTION_STATE_ENTRY = 0x01,	/*!<进站通道*/
+	EM_AG_CHANNEL_DIRECTION_STATE_EXIT  = 0x02,	/*!<出站通道*/
+	EM_AG_CHANNEL_DIRECTION_STATE_BI_DIR= 0x03, /*!<双向通道*/
+
+}EM_AG_CHANNEL_DIRECTION_STATE;
+
+/* 闸机应用方向：  */
+typedef enum
+{
+	//通道模式状态值	通道模式状态名称
+	EM_AG_APPLICATION_TYPE_NORMAL  = 0x01,	/*!<普通应用通道*/
+	EM_AG_APPLICATION_TYPE_SPECIAL= 0x02, /*!<特殊应用通道*/
+	EM_AG_APPLICATION_TYPE_ALL = 0x03,	/*!<全应用通道*/
+
+}EM_AG_APPLICATION_TYPE;
+
+/* 售补票模式定义 */
+typedef enum
+{
+	EM_BOM_SALE_COMPENSATION_MODE_SALE         = 0x01,	/*!<售票模式> */
+	EM_BOM_SALE_COMPENSATION_MODE_COMPENSATION = 0x02,  /*!<补票模式*/
+	EM_BOM_SALE_COMPENSATION_MODE_SALE_AND_COMPENSATION = 0x03,	/*!<售票、补票模式*/
+
+}EM_BOM_SALE_COMPENSATION_MODE;
+
+/* 定义个性参数定， 这些参数在设备之间通常存在差异性，比如：SC IP地址，不同车站的IP地址肯定不同，该部分参数存储与本机配置文件中 */
+typedef enum
+{
+	EM_SPEC_PARAM_KEY_DEVICE_TYPE        = 10, //设备类型
+	EM_SPEC_PARAM_KEY_DEVICE_SUB_TYPE    = 11, //设备子类型
+
+	EM_SPEC_PARAM_KEY_LINE_CODE          = 15, //线路编码
+	EM_SPEC_PARAM_KEY_STATION_CODE       = 16, //车站编码
+	EM_SPEC_PARAM_KEY_DEVICE_CODE        = 17, //设备编号
+
+	EM_SPEC_PARAM_KEY_DEVICE_GROUP_CODE  = 21, //设备分组编码
+	EM_SPEC_PARAM_KEY_SLE_IP             = 22, //本机IP地址
+
+	EM_SPEC_PARAM_KEY_SC_DEVICE_CODE     = 31, //Sc设备ID
+	EM_SPEC_PARAM_KEY_SC_IP              = 32, //SC通讯IP地址
+	EM_SPEC_PARAM_KEY_SC_PORT            = 33, //通讯端口
+
+	EM_SPEC_PARAM_KEY_FTP_IP             = 41, //FtpIp地址
+	EM_SPEC_PARAM_KEY_FTP_USER           = 42, //Ftp用户名
+	EM_SPEC_PARAM_KEY_FTP_PWD            = 43, //Ftp密码
+
+	EM_SPEC_PARAM_KEY_CLOCK_SERVER_IP    = 51, //时钟源Ip
+	EM_SPEC_PARAM_KEY_CLOCK_SERVER_PORT  = 52, //时钟源端口
+
+	EM_SPEC_PARAM_KEY_AG_PHYSICAL_TYPE   = 61, //闸机物理类型，详见： AG_PHYSICAL_TYPE
+
+
+} EM_SPEC_PARAM_KEY;
+
+
+
+
+
+/* 定义标准参数ID值。此类参数通常会根据标准参数转换而来，用于所有设备一致性的控制。 该部分参数的取值，在参数同步、每次开机时，都有可能与参数进行同步
+ * 不同机器的配置通常一样。
+ * 注意： 该枚举值的定义，暂定十进制数方式表示，以方便数据库（或文件）中记录的数据值与实际值、内存值一致性显示
+ *
+ * */
+typedef enum
+{
+	//系统运营类
+	EM_STANDARD_PARAM_KEY_SYSTEM_RUN_BEGIN_TIME  				 = 100, //系统运营开始时间
+	EM_STANDARD_PARAM_KEY_SYSTEM_RUN_END_TIME		             = 101, //系统运营结束时间
+	EM_STANDARD_PARAM_KEY_SYSTEM_RUN_SWITCH_TIME			 	 = 102, //系统运营日切换时间, 以0点起始计算的秒数
+	EM_STANDARD_PARAM_KEY_SYSTEM_RUN_RUN_DELAY_TIME              = 103, //延长运营时间，“30”，单位：分钟
+	EM_STANDARD_PARAM_KEY_SYSTEM_RUN_SWITCH_COUNT_DOWN           = 104, //运营日切换前BOM弹出提示窗口的倒数时间
+
+	//数据传输类(时间间隔)
+	EM_STANDARD_PARAM_KEY_INTERVAL_SEND_DEV_PART_INFO		     = 106,//部件版本上报SC时间间隔 0205
+	EM_STANDARD_PARAM_KEY_INTERVAL_SEND_TPU_PARAM_VER_INFO       = 107,//读卡器参数版本上报SC时间间隔 0206
+	EM_STANDARD_PARAM_KEY_INTERVAL_SEND_TICKET_CASH_DATA		 = 108,//产生票箱箱库存数据上报SC时间间隔 0605
+	EM_STANDARD_PARAM_KEY_INTERVAL_SEND_PSAM_INFO                = 109,//PSAM卡信息上报SC时间间隔
+
+	//数据传输类
+	EM_STANDARD_PARAM_KEY_DATA_FILE_GENERATE_INTERVAL_UD		 = 110,	// 交易数据文件生成时间间隔
+	EM_STANDARD_PARAM_KEY_DATA_FILE_GENERATE_INTERVAL_BUSI       = 111,	// 业务数据文件生成时间间隔
+	EM_STANDARD_PARAM_KEY_DATA_FILE_GENERATE_INTERVAL_EVENT		 = 112, // 事件数据文件生成时间间隔
+	EM_STANDARD_PARAM_KEY_DATA_FILE_GENERATE_INTERVAL_SETTLEMENT = 113,	// 结算数据文件生成时间间隔，需要即时传输，影响对账
+	EM_STANDARD_PARAM_KEY_DATA_FILE_GENERATE_INTERVAL_AR 		 = 114, // 审计数据文件生成时间间隔
+
+	EM_STANDARD_PARAM_KEY_DATA_UPLOAD_INTERVAL_REGISTER          = 116, // 寄存器数据上传时间间隔
+	EM_STANDARD_PARAM_KEY_DATA_FILE_UPLOAD_PATH_YPT         	 = 117, //一票通数据文件上传路径
+	EM_STANDARD_PARAM_KEY_DATA_FILE_UPLOAD_PATH_YKT      	     = 118, //一卡通数据文件上传路径
+	EM_STANDARD_PARAM_KEY_DATA_FILE_UPLOAD_PATH_BIZ      		 = 119, //业务数据文件上传路径
+
+	//时钟同步相关
+	EM_STANDARD_PARAM_KEY_SYN_CLOCK_INTERVAL					 = 120,	// 时钟同步时间间隔
+	EM_STANDARD_PARAM_KEY_SYN_CLOCK_THRESHOLD_MIN				 = 121, // 时钟同步最小阀值
+	EM_STANDARD_PARAM_KEY_SYN_CLOCK_THRESHOLD_ALARM				 = 122,	// 时间同步最大警告阀值
+	EM_STANDARD_PARAM_KEY_SYN_CLOCK_THRESHOLD_FAULT				 = 123,	// 时钟同步最大故障阀值
+
+	//权限相关
+	EM_STANDARD_PARAM_KEY_PRIV_PASSWORD_INPUT_TIMEOUT			 = 130, // 密码输入超时时间，超时后，退回欢迎界面或自动清除已经输入的帐号信息
+	EM_STANDARD_PARAM_KEY_PRIV_LOGIN_RETRY_TIMES                 = 131, // 登录尝试次数，各设备可能不同
+	EM_STANDARD_PARAM_KEY_PRIV_AUTO_LOGOUT_INTERVAL				 = 132, // 无操作自动登出时间间隔，各设备可能不同
+
+	//参数管理相关
+	EM_STANDARD_PARAM_KEY_PARAM_DOWNLOAD_REMOTE_CURRENT_VER_PATH = 140, //当前版本参数下载远程目录
+	EM_STANDARD_PARAM_KEY_PARAM_DOWNLOAD_REMOTE_FUTURE_VER_PATH  = 141, //将来版本参数下载远程目录
+
+	//一卡通远程服务器，通常用于充值、售卡等联机业务
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_IP1            			 = 161, //一卡通服务器IP1地址
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_IP2         				 = 162, //一卡通服务器IP2地址
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_IP3             			 = 163, //一卡通服务器IP3地址
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_IP4            			 = 164, //一卡通服务器IP4地址
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_PORT1           			 = 166, //一卡通服务器IP1端口号
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_PORT2           			 = 167, //一卡通服务器IP2端口号
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_PORT3           			 = 168, //一卡通服务器IP3端口号
+	EM_STANDARD_PARAM_KEY_YKT_SERVER_PORT4           			 = 169, //一卡通服务器IP4端口号
+
+	//一票通远程服务器，通常用于充值、售卡等联机业务
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_IP1             			 = 171, //一票通服务器IP1地址
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_IP2            			 = 172, //一票通服务器IP2地址
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_IP3             			 = 173, //一票通服务器IP3地址
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_IP4             			 = 174, //一票通服务器IP4地址
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_PORT1           			 = 176, //一票通服务器IP1端口号
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_PORT2           			 = 177, //一票通服务器IP2端口号
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_PORT3           			 = 178, //一票通服务器IP3端口号
+	EM_STANDARD_PARAM_KEY_YPT_SERVER_PORT4           			 = 179, //一票通服务器IP4端口号
+
+	//设备通用运行控制类
+	EM_STANDARD_PARAM_KEY_CONTINUOUS_ERROR_PIECES				 = 180, // 车票连续出错最大张数，各设备可能不同
+	EM_STANDARD_PARAM_KEY_MAINTENANCE_DOOR_ALRAM_INTERVAL	  	 = 181, // 维修门未关闭报警时间间隔，各设备可能不同
+	EM_STANDARD_PARAM_KEY_MAINTENANCE_DOOR_OPEN_ALARM_FLAG       = 182, // 维修门报警开关	0：打开, 1关闭
+
+	//电源类
+	EM_STANDARD_PARAM_KEY_POWER_THRESHOLD	  	 = 186, // 电源低阀值 added by wangzp
+
+	//票箱类
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_ISSUE_ALMOST_EMPTY_NUM		 = 200, //发票箱将空张数，主要用于BOM、TVM
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_ISSUE_EMPTY_NUM			 = 201, //发票箱已空张数，主要用于BOM、TVM
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_WASTE_ALMOST_FULL_NUM 		 = 202, //废票箱将满张数，用于AG、TVM、BOM
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_WASTE_FULL_NUM 			 = 203, //废票箱已满张数，用于AG、TVM、BOM
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_WITHDRAW_ALMOST_FULL_NUM	 = 204, //回收箱将满报警数量，主要用于AG
+	EM_STANDARD_PARAM_KEY_BOX_TICKET_WITHDRAW_FULL_NUM			 = 205, //回收箱满报警数量，主要用于AG
+
+	//纸币钱箱
+	EM_STANDARD_PARAM_KEY_BOX_BILL_WITHDRAW_ALMOST_FULL_NUM		 = 210, //纸币回收箱将满张数
+	EM_STANDARD_PARAM_KEY_BOX_BILL_WITHDRAW_FULL_NUM			 = 211, //纸币回收箱已满张数
+	EM_STANDARD_PARAM_KEY_BOX_BILL_CHANGE_ALMOST_EMPTY_NUM		 = 212, //纸币找零箱将空数量
+	EM_STANDARD_PARAM_KEY_BOX_BILL_CHANGE_EMPTY_NUM				 = 213, //纸币找零箱已空数量
+	EM_STANDARD_PARAM_KEY_BOX_BILL_WASTE_ALMOST_FULL_NUM     	 = 214, //废钞箱将满数量
+	EM_STANDARD_PARAM_KEY_BOX_BILL_WASTE_FULL_NUM              	 = 215, //废钞箱已满数量
+	EM_STANDARD_PARAM_KEY_BOX_BILL_LOOP_CHANGE_ALMOST_FULL_NUM	 = 505, //纸币循环找零箱将满张数    //added by wangzp
+	EM_STANDARD_PARAM_KEY_BOX_BILL_LOOP_CHANGE_FULL_NUM			 = 506, //纸币循环找零箱已满张数    //added by wangzp
+
+	//硬币钱箱
+	EM_STANDARD_PARAM_KEY_BOX_COIN_WITHDRAW_ALMOST_FULL_NUM		 = 216, //硬币回收箱将满数量
+	EM_STANDARD_PARAM_KEY_BOX_COIN_WITHDRAW_FULL_NUM 			 = 217, //硬币回收箱已满数量
+	EM_STANDARD_PARAM_KEY_BOX_COIN_CHANGE_ALMOST_EMPTY_NUM		 = 218, //硬币找零箱将空数量
+	EM_STANDARD_PARAM_KEY_BOX_COIN_CHANGE_EMPTY_NUM				 = 219, //硬币找零箱已空数量
+	EM_STANDARD_PARAM_KEY_BOX_COIN_LOOP_CHANGE_FULL_NUM			 = 500, //硬币循环找零箱已满数量    //added by wangzp
+	EM_STANDARD_PARAM_KEY_BOX_COIN_LOOP_CHANGE__ALMOST_FULL_NUM	 = 501, //硬币循环找零箱将满数量    //added by wangzp
+
+	//TVM售票业务 - 纸币、硬币 接收与找零 数量、总金额
+	EM_STANDARD_PARAM_KEY_SALE_BILL_WITHDRAW_MAX_NUM			 = 220, //发售业务，纸币接收最大张数
+	EM_STANDARD_PARAM_KEY_SALE_BILL_WITHDRAW_MAX_AMOUNT			 = 221, //发售业务，纸币接收最大总金额
+	EM_STANDARD_PARAM_KEY_SALE_BILL_CHANGE_MAX_NUM				 = 222, //发售业务，纸币找零最大张数
+	EM_STANDARD_PARAM_KEY_SALE_BILL_CHANGE_MAX_AMOUNT			 = 223, //发售业务，纸币找零最大总金额
+
+	EM_STANDARD_PARAM_KEY_SALE_COIN_WITHDRAW_MAX_NUM			 = 225, //发售业务，硬币接收最大枚数
+	EM_STANDARD_PARAM_KEY_SALE_COIN_WITHDRAW_MAX_AMOUNT			 = 226, //发售业务，硬币接收最大总金额
+	EM_STANDARD_PARAM_KEY_SALE_COIN_CHANGE_MAX_NUM				 = 227, //发售业务，硬币找零最大枚数
+	EM_STANDARD_PARAM_KEY_SALE_COIN_CHANGE_MAX_AMOUNT			 = 228, //发售业务，硬币找零最大总金额
+
+	//TVM充值业务 - 纸币、硬币 接收与找零 数量、总金额
+	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_WITHDRAW_MAX_NUM		 = 230, //充值业务，纸币接收最大张数
+	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_WITHDRAW_MAX_AMOUNT		 = 231, //充值业务，纸币接收最大总金额
+	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_CHANGE_MAX_NUM			 = 232, //充值业务，纸币找零最大张数
+	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_CHANGE_MAX_AMOUNT		 = 233, //充值业务，纸币找零最大总金额
+
+	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_WITHDRAW_MAX_NUM		 = 235, //充值业务，硬币接收最大张数，项目中通常不用
+	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_WITHDRAW_MAX_AMOUNT		 = 236, //充值业务，硬币接收最大总金额，项目中通常不用
+	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_CHANGE_MAX_NUM			 = 237, //充值业务，硬币找零最大张数，项目中通常不用
+	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_CHANGE_MAX_AMOUNT		 = 238, //充值业务，硬币找零最大总金额，项目中通常不用
+
+	//TVM售票业务 - 纸币接收面额
+	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE          = 240, //售票接受的纸币面额种类 ST_DENO_INFO类型，4字节
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE1          = 240, //售票接受的纸币面额种类1，具体项目含义不同，比如：国内可能表示100元，印度表示1000RS.
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE2          = 241, //售票接受的纸币面额种类2
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE3          = 242, //售票接受的纸币面额种类3
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE4          = 243, //售票接受的纸币面额种类4
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE5          = 244, //售票接受的纸币面额种类5
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE6          = 245, //售票接受的纸币面额种类6
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE7          = 246, //售票接受的纸币面额种类7
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE8          = 247, //售票接受的纸币面额种类8
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE9          = 248, //售票接受的纸币面额种类9
+//	EM_STANDARD_PARAM_KEY_SALE_BILL_DENOMINATION_VALUE10         = 249, //售票接受的纸币面额种类10
+
+	//TVM售票业务 - 硬币接收面额
+	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE          = 250, //售票接受的硬币面额种类 ST_DENO_INFO类型，4字节
+//	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE1          = 250, //售票接受的硬币面额种类1
+//	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE2          = 251, //售票接受的硬币面额种类2
+//	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE3          = 252, //售票接受的硬币面额种类3
+//	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE4          = 253, //售票接受的硬币面额种类4
+//	EM_STANDARD_PARAM_KEY_SALE_COIN_DENOMINATION_VALUE5          = 254, //售票接受的硬币面额种类5
+
+	//TVM充值业务 - 纸币接收面额
+	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE      = 260, //充值接受的纸币面额种类 ST_DENO_INFO类型，4字节
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE1      = 260, //充值接受的纸币面额种类1，具体项目含义不同，比如：国内可能表示100元，印度表示1000RS.
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE2      = 261, //充值接受的纸币面额种类2
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE3      = 262, //充值接受的纸币面额种类3
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE4      = 263, //充值接受的纸币面额种类4
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE5      = 264, //充值接受的纸币面额种类5
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE6      = 265, //充值接受的纸币面额种类6
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE7      = 266, //充值接受的纸币面额种类7
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE8      = 267, //充值接受的纸币面额种类8
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE9      = 268, //充值接受的纸币面额种类9
+//	EM_STANDARD_PARAM_KEY_RECHARGE_BILL_DENOMINATION_VALUE10     = 269, //充值接受的纸币面额种类10
+
+	//TVM充值业务 - 硬币接收面额
+	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE      = 270, //充值接受的硬币面额种类 ST_DENO_INFO类型，4字节
+//	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE1      = 270, //充值接受的硬币面额种类1
+//	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE2      = 271, //充值接受的硬币面额种类2
+//	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE3      = 272, //充值接受的硬币面额种类3
+//	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE4      = 273, //充值接受的硬币面额种类4
+//	EM_STANDARD_PARAM_KEY_RECHARGE_COIN_DENOMINATION_VALUE5      = 274, //充值接受的硬币面额种类5
+
+	//TVM - 交易控制 cancel
+	EM_STANDARD_PARAM_KEY_TVM_TRANS_CANCEL_INTERVAL				 = 400, //交易取消时间
+	EM_STANDARD_PARAM_KEY_TVM_STANDBY_INTERFACE_SWITCH_INTERVAL  = 401, //待机画面切换时间
+	EM_STANDARD_PARAM_KEY_TVM_STANDBY_SCREEN_IS_ALLOW            = 402, //是否允许显示待机画面
+	EM_STANDARD_PARAM_KEY_TVM_SALE_TICKET_LIMIT_AMOUNT           = 403, //购票数量限制
+	EM_STANDARD_PARAM_KEY_TVM_THE_TIME_OF_CASH_INPUT_OVERTIME    = 404, //投币等待时间(投币倒计时)
+
+	//IsAllowStandbyScreen	是否允许显示待机画面	Char	1	0：不允许；1：允许
+
+	//AG-通行控制
+	EM_STANDARD_PARAM_KEY_AG_CARD_SWING_MAX_NUM					 = 800, //Ag最大刷卡人次(通行队列最大容量)
+	EM_STANDARD_PARAM_KEY_AG_PASSENGER_PASS_TIMEOUT_INTERVAL	 = 801,	//Ag乘客通过闸机超时时间
+	EM_STANDARD_PARAM_KEY_AG_PASSENGER_LEAVING_TIMEOUT_INTERVAL  = 802, //Ag乘客离开闸机超时时间
+
+	//AG-特殊声光-黑名单
+	EM_STANDARD_PARAM_KEY_AG_BLACKLIST_LAMP 					 = 810, //Ag黑名单亮灯处理
+	EM_STANDARD_PARAM_KEY_AG_BLACKLIST_SOUND					 = 811, //Ag黑名单声音处理
+
+	//AG-特殊声光- 坏卡
+	EM_STANDARD_PARAM_KEY_AG_INVALID_CARE_LAMP 					 = 814, //Ag坏卡亮灯处理
+	EM_STANDARD_PARAM_KEY_AG_INVALID_CARE_SOUND					 = 815, //Ag坏卡声音处理
+
+	//AG-特殊声光- 非法闯入
+	EM_STANDARD_PARAM_KEY_AG_INTRUDE_LAMP						 = 818, //Ag非法闯入闯出亮灯处理
+	EM_STANDARD_PARAM_KEY_AG_INTRUDE_SOUND						 = 819, //Ag非法闯入闯出声音处理
+
+	EM_STANDARD_PARAM_KEY_LOW_POWER_SHUTDOWN					= 820, 	//设备电量达到设定电量最低值以下关机
+
+	//BOM-业务控制  900 ～999
+
+}EM_STANDARD_PARAM_KEY;
+
+
+/* Env参数ID定义: 定义与设备运行环境相关的配置及控制参数，此类参数通常可针对单台机器进行个性化的配置，且在实际运行中，可通过维修、控制命令等方式进行个性化改变。
+ * 不同机器可以不一样。
+ * 注意：该枚举值的定义，暂定十进制数方式表示，以方便数据库（或文件）中记录的数据值与实际值、内存值一致性显示 */
+typedef enum
+{
+
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_STARTUP    = 5100, //开机始终同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_RUN_STRART = 5101, //运营开始时钟同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_RUN_END    = 5102, //运营结束时钟同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_TIMING     = 5103, //定时时钟同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_FORCE      = 5104, //强制时钟同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW_MANUAL     = 5105, //手工时钟同步开关: 1:开 0;关
+	EM_ENV_PARAM_KEY_SYNC_TIME_SW            = 5106, //时钟同步(总)开关: 1:开 0;关
+
+	EM_ENV_PARAM_KEY_PRIV_IS_NEED_SEND_NOTIFY_TO_SC = 5120, //是否需要向SC发送通知， 1:开 0;关
+	EM_ENV_PARAM_KEY_PRIV_LOGIN_VERIFY_MODE         = 5121, //登录验证方式，具体取值详见： EM_LOGIN_VERIFY_MODE 的定义
+	EM_ENV_PARAM_KEY_PARAM_DOWNLOAD_MODE            = 5122, //参数（主控或组件）版本比较方式，具体取值详见：EM_PARAM_DOWNLOAD_MODE
+
+	EM_ENV_PARAM_KEY_SW_RECHARGEABLE_CARD_TYPE      = 5130, //可充值卡类型: 1：仅城市通；2：仅地铁票；3 全部允许； 4：全部不允许
+
+	EM_ENV_PARAM_KEY_SW_DETECT_ILLEGAL_CHANGED_ON_IDLE_STATE_TICKETBOX         = 5140, //是否在空闲状态检测票箱非法更换：0不检查，1是检查
+	EM_ENV_PARAM_KEY_SW_DETECT_ILLEGAL_CHANGED_ON_IDLE_STATE_COINBOX           = 5141, //是否在空闲状态检测硬币钱箱非法更换：0不检查，1是检查
+	EM_ENV_PARAM_KEY_SW_DETECT_ILLEGAL_CHANGED_ON_IDLE_STATE_BILL_CHANGE_BOX   = 5142, //是否在空闲状态检测纸币找零钱箱非法更换：0不检查，1是检查
+	EM_ENV_PARAM_KEY_SW_DETECT_ILLEGAL_CHANGED_ON_IDLE_STATE_BILL_RECEIVE_BOX  = 5143, //是否在空闲状态检测纸币接收钱箱非法更换：0不检查，1是检查
+
+	EM_ENV_PARAM_KEY_SLE_TEST_MODE = 5150, //测试模式设置 Key 值: 1 测试模式； 2 非测试模式
+
+	EM_ENV_PARAM_KEY_TVM_SW_YPF                     = 5600,  //开启一票否认证： 1:开 0;关
+	EM_ENV_PARAM_KEY_TVM_SW_CALL_HELP               = 5601,  //是否允许招援
+	EM_ENV_PARAM_KEY_TVM_SW_ADVERTISEMENT           = 5602,  //是否允许播放广告
+	EM_ENV_PARAM_KEY_TVM_SW_PASSENGER_SERNER        = 5603,  //是否开启人体传感器
+
+	EM_ENV_PARAM_KEY_AG_SW_HEIGHT_DETECTION         = 5700, //AG身高检测： 1:开 0;关
+	EM_ENV_PARAM_KEY_AG_DOOR_WORKING_MODE           = 5750, //AG闸门工作模式： 1：常开； 2： 常闭
+	EM_ENV_PARAM_KEY_AG_CHANNEL_DIRECTION_STATE     = 5751, //详见： EM_AG_CHANNEL_DIRECTION_STATE 闸机通行方向： 主要针对双向AG，用于存储其实际的设置的通道方向
+	EM_ENV_PARAM_KEY_AG_ENTRY_CHANNEL_APPLICATION_TYPE     = 5752, //详见： EM_AG_APPLICATION_TYPE 闸机通道类型：正常通道，普通通道，专用通道 added by wangzp at 30th,Oct,2015
+	EM_ENV_PARAM_KEY_AG_EXIT_CHANNEL_APPLICATION_TYPE     = 5753, //详见： EM_AG_APPLICATION_TYPE 闸机通道类型：正常通道，普通通道，专用通道 added by wangzp at 30th,Oct,2015
+
+
+}EM_ENV_PARAM_KEY;
+
+
+
+#endif /* _SLE_PARAM_ATTRI_DEF_PUBLIC_H_ */

@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/CssAfcSleV41/!svn/ver/26354/CssAfcSle/Develop/Trunk/LibProject/Ipc/include
+END
+IpcMsgChildContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/CssAfcSleV41/!svn/ver/2248/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcMsgChildContainer.h
+END
+IpcMsgSortContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/3461/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcMsgSortContainer.h
+END
+VirObjAgmUIForCore.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/18729/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjAgmUIForCore.h
+END
+VirObjCoreForAgmUI.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/9337/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjCoreForAgmUI.h
+END
+IpcMsgSortRegister.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/2217/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcMsgSortRegister.h
+END
+VirObjCoreForMaintence.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/26027/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjCoreForMaintence.h
+END
+VirObjMaintenceForCore.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/26027/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjMaintenceForCore.h
+END
+VirObjTvmUIForCore.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/23101/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjTvmUIForCore.h
+END
+VirObjTvmCoreForUI.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/19370/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjTvmCoreForUI.h
+END
+VirObjTvmOperUIForMaintence.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/26323/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjTvmOperUIForMaintence.h
+END
+VirObjTvmMaintenceForOperUI.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/CssAfcSleV41/!svn/ver/26289/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjTvmMaintenceForOperUI.h
+END
+VirObjBomUIToBomCore.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/CssAfcSleV41/!svn/ver/23457/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjBomUIToBomCore.h
+END
+VirObjBomCoreToBomUI.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/CssAfcSleV41/!svn/ver/23457/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjBomCoreToBomUI.h
+END
+VirObjCommForMaintence.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/17550/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjCommForMaintence.h
+END
+VirObjMaintenceForComm.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CssAfcSleV41/!svn/ver/17548/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjMaintenceForComm.h
+END
+IpcMsgMotherContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/CssAfcSleV41/!svn/ver/11288/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcMsgMotherContainer.h
+END
+VirObjSleCoreInner.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/CssAfcSleV41/!svn/ver/26011/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjSleCoreInner.h
+END
+IpcManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/CssAfcSleV41/!svn/ver/2217/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcManager.h
+END
+ipcpublic.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/CssAfcSleV41/!svn/ver/26354/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/ipcpublic.h
+END
+VirObjectBase.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/CssAfcSleV41/!svn/ver/10896/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjectBase.h
+END
+VirObjCoreForComm.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/20249/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjCoreForComm.h
+END
+VirObjCommForCore.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/CssAfcSleV41/!svn/ver/17557/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/VirObjCommForCore.h
+END
+IpcMsgText.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/CssAfcSleV41/!svn/ver/9130/CssAfcSle/Develop/Trunk/LibProject/Ipc/include/IpcMsgText.h
+END

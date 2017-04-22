@@ -38,109 +38,12 @@ CMobileScan::CMobileScan(QWidget *parent):QWidget(parent)
     QObject::connect(m_PaymentBeginBtn,SIGNAL(clicked()),this,SLOT(on_click_PaymentBegin_Btn()));
     QObject::connect(m_CancelPaymentBtn,SIGNAL(clicked()),this,SLOT(on_click_CancelPayment_Btn()));
     QObject::connect(m_GetStatusBtn,SIGNAL(clicked()),this,SLOT(on_click_GetStatus_Btn()));
+    QObject::connect(this,SIGNAL(New_QRCode_has_Created()),this,SLOT(create_QRCode_and_Show()));
 }
-CMobileScan::~CMobileScan()
-{
-    delete m_ConnetBtn;
-    delete m_DisconnetBtn;
-    delete m_PaymentBeginBtn;
-    delete m_CancelPaymentBtn;
-    delete m_GetStatusBtn;
-    delete m_PayMethodLabel;
-    delete m_EndStationLabel;
-    delete m_PriceLabel;
-    delete m_TicketCountLabel;
-    delete m_TicketOutLabel;
-    delete m_PayMethodEdit;
-    delete m_EndStationEdit;
-    delete m_PriceEdit;
-    delete m_TicketCountEdit;
-    delete m_TicketOutEdit;
-    delete m_TextShow;
-}
-
-void CMobileScan::InitWidgets()
-{
-    int iLeft = 0, iTop = 0;
-    m_ConnetBtn = new QPushButton(this);
-    m_ConnetBtn->setText("连接");
-    m_ConnetBtn->setGeometry(iLeft,iTop,50,30);
-    iLeft += 50;
-    m_GetStatusBtn = new QPushButton(this);
-    m_GetStatusBtn->setText("状态");
-    m_GetStatusBtn->setGeometry(iLeft,iTop,50,30);
-    iLeft += 50;
-    m_DisconnetBtn = new QPushButton(this);
-    m_DisconnetBtn->setText("断开连接");
-    m_DisconnetBtn->setGeometry(iLeft,iTop,100,30);
-    iLeft += 100;
-    m_PaymentBeginBtn = new QPushButton(this);
-    m_PaymentBeginBtn->setText("交易开始");
-    m_PaymentBeginBtn->setGeometry(iLeft,iTop,100,30);
-    iLeft += 100;
-    m_CancelPaymentBtn = new QPushButton(this);
-    m_CancelPaymentBtn->setText("取消交易");
-    m_CancelPaymentBtn->setGeometry(iLeft,iTop,100,30);
-
-    m_TextShow = new QTextEdit(this);
-    m_TextShow->setGeometry(400,0,400,400);
-
-    QRegExp regExp("([1-2]{1}$)");
-
-    iLeft = 0;
-    iTop += 40;
-    m_PayMethodEdit = new QLineEdit(this);
-    m_PayMethodEdit->setGeometry(iLeft,iTop,50,30);
-    m_PayMethodEdit->setValidator(new QRegExpValidator(regExp, this));
-
-    iTop += 30;
-//    m_StartStationEdit = new QLineEdit(this);
-//    m_StartStationEdit->setGeometry(iLeft,iTop,50,30);
-//    iTop += 30;
-    m_EndStationEdit = new QLineEdit(this);
-    m_EndStationEdit->setGeometry(iLeft,iTop,50,30);
-    iTop += 30;
-    m_PriceEdit = new QLineEdit(this);
-    m_PriceEdit->setText("2");
-    m_PriceEdit->setGeometry(iLeft,iTop,50,30);
-    iTop += 30;
-    m_TicketCountEdit = new QLineEdit(this);
-    m_TicketCountEdit->setText("1");
-    m_TicketCountEdit->setGeometry(iLeft,iTop,50,30);
-    iTop += 30;
-    m_TicketOutEdit = new QLineEdit(this);
-    m_TicketOutEdit->setText("1");
-    m_TicketOutEdit->setGeometry(iLeft,iTop,50,30);
-
-    iLeft = 50;
-    iTop = 40;
-    m_PayMethodLabel = new QLabel(this);
-    m_PayMethodLabel->setText("支付方式(1:微信2:支付宝)");
-    m_PayMethodLabel->setGeometry(iLeft,iTop,200,30);
-    iTop += 30;
-    m_EndStationLabel = new QLabel(this);
-    m_EndStationLabel->setText("终点站");
-    m_EndStationLabel->setGeometry(iLeft,iTop,200,30);
-    iTop += 30;
-    m_PriceLabel = new QLabel(this);
-    m_PriceLabel->setText("票价");
-    m_PriceLabel->setGeometry(iLeft,iTop,200,30);
-    iTop += 30;
-    m_TicketCountLabel = new QLabel(this);
-    m_TicketCountLabel->setText("张数");
-    m_TicketCountLabel->setGeometry(iLeft,iTop,200,30);
-
-    iTop += 30;
-    m_TicketOutLabel = new QLabel(this);
-    m_TicketOutLabel->setText("实际出票张数");
-    m_TicketOutLabel->setGeometry(iLeft,iTop,200,30);
-}
-
-
 void CMobileScan::QRCodeDataNotify(const void *pData)
 {
     if(NULL != pData)
-        memcpy(m_szQRCodeData,pData,sizeof(m_szQRCodeData));
+        strcpy(m_szQRCodeData,(char *)pData);
     sem_post(&m_DataSem);
 }
 
@@ -153,16 +56,26 @@ void CMobileScan::PaymentNotify(const void *pData)
 
 void CMobileScan::FailtureNotify(const void *pData)
 {
-    if(NULL != pData)
-        return;
+//    if(NULL != pData)
+//        return;
     sem_post(&m_FailureSem);
 }
 
 void CMobileScan::on_click_Connet_Btn()
 {
+    if(m_bIsConnet)
+    {
+        m_TextShow->append("已连接");
+        return;
+    }
+
     if(m_MobileScan->Connect(NULL))
     {
         m_TextShow->append("连接成功");
+        m_MobileScan->RegEventHandler((CIWebPayEvenHandler*)this);
+        char Addr[100];
+        sprintf(Addr,"%p",this);
+        m_TextShow->append(Addr);
         m_bIsConnet = true;
     }
     else
@@ -235,6 +148,13 @@ void CMobileScan::on_click_PaymentBegin_Btn()
         m_TextShow->append("站点购票");
         m_stTranInfo.dwDesStationID = m_EndStationEdit->text().toInt();
     }
+    if(m_bIsInTrans)
+    {
+         m_TextShow->append("交易中");
+         return;
+    }
+    memset(&m_stTranInfo,0,sizeof(m_stTranInfo));
+
     m_stTranInfo.emPaySubMethod = (EM_PAYMENT_SUB_METHOD)m_PayMethodEdit->text().toInt();
     m_stTranInfo.iUnitPrice = m_PriceEdit->text().toInt();
     m_stTranInfo.iCountFromPassenger = m_TicketCountEdit->text().toInt();
@@ -244,11 +164,13 @@ void CMobileScan::on_click_PaymentBegin_Btn()
     m_iNeedPayAmount = m_TicketCountEdit->text().toInt() * m_PriceEdit->text().toInt();
     if(!m_MobileScan->paymentBegin((void *)&m_stTranInfo))
     {
+        m_bIsInTrans = false;
         m_TextShow->append("提交订单失败");
         return;
     }
     else
     {
+        m_bIsInTrans = true;
         m_TextShow->append("提交订单成功");
     }
 }
@@ -276,6 +198,50 @@ void CMobileScan::on_click_CancelPayment_Btn()
         m_TextShow->append("未连接");
         return ;
     }
+    if(!m_bIsInTrans)
+    {
+        m_TextShow->append("没有交易可以取消");
+        return ;
+    }
+    else if(m_bIsBusy)
+    {
+        m_TextShow->append("交易正忙");
+        return ;
+    }
+    strcpy(m_stTranInfo.szEndDate,QDateTime::currentDateTime().toString("yyyyMMdd").toStdString().c_str());
+    strcpy(m_stTranInfo.szEndTime,QDateTime::currentDateTime().toString("hhmmss").toStdString().c_str());
+
+    if(!m_MobileScan->cancelPayment((void*)&m_stTranInfo))
+    {
+        m_TextShow->append("取消交易失败");
+    }
+    else
+    {
+        m_TextShow->append("取消交易成功");
+        m_bIsInTrans = false;
+        m_bIsBusy = false;
+        HidePic();
+    }
+}
+void CMobileScan::create_QRCode_and_Show()
+{
+    QPixmap pix(QString("%1/%2").arg(FILEPATH).arg(FILENAME));
+    pix = pix.scaled(m_QRCodeLabel->width(),m_QRCodeLabel->height(),Qt::KeepAspectRatio);
+    m_QRCodeLabel->setPixmap(pix);
+    m_QRCodeLabel->show();
+
+    if(EM_PAYMENT_SUB_METHOD_ALIPAY == m_stTranInfo.emPaySubMethod)
+    {
+        m_AliPay->show();
+        m_AliPay->raise();
+        m_WechatPay->hide();
+    }
+    else
+    {
+        m_WechatPay->show();
+        m_WechatPay->raise();
+        m_AliPay->hide();
+    }
 }
 
 void * CMobileScan::EventCatchThread(void *arg)
@@ -285,11 +251,25 @@ void * CMobileScan::EventCatchThread(void *arg)
     {
         if(!sem_trywait(&pMobileScan->m_DataSem))
         {
+            pthread_mutex_lock(&pMobileScan->m_EvenThreadMutex);
             pMobileScan->m_TextShow->append("m_DataSem");
-            pMobileScan->m_TextShow->append(pMobileScan->m_szQRCodeData);
+            pMobileScan->m_TextShow->append("QRCode:" + QString("%1").arg(pMobileScan->m_szQRCodeData));
+            char szFaultInfo[256] = {0};
+            if(!GenerateQRCode(pMobileScan->m_szQRCodeData,FILEPATH,FILENAME,szFaultInfo))
+            {
+                pMobileScan->m_TextShow->append("生成二维码失败");
+            }
+            else
+            {
+                pMobileScan->m_TextShow->append("生成二维码成功");
+                emit pMobileScan->New_QRCode_has_Created();
+            }
+            pthread_mutex_unlock(&pMobileScan->m_EvenThreadMutex);
         }
         if(!sem_trywait(&pMobileScan->m_PaymentSem))
         {
+            pthread_mutex_lock(&pMobileScan->m_EvenThreadMutex);
+            pMobileScan->m_bIsBusy = true;
             pMobileScan->m_TextShow->append("m_PaymentSem");
             QString string = QString("szOrderNo:%1\n szUserName:%2\n szAmount:%3\n szPaymentAccount:%4\n szPaymentResult:%5\n szPaymentDesc:%6").\
                     arg(pMobileScan->m_stPayResult.szOrderNo).arg(pMobileScan->m_stPayResult.szUserName).\
@@ -303,15 +283,165 @@ void * CMobileScan::EventCatchThread(void *arg)
                 strcpy(pMobileScan->m_stTranInfo.szEndTime,QDateTime::currentDateTime().toString("hhmmss").toStdString().c_str());
                 pMobileScan->m_stTranInfo.iTransCount = pMobileScan->m_TicketOutEdit->text().toInt();
                 pMobileScan->m_MobileScan->confirmPayment((void*)&pMobileScan->m_stTranInfo);
+                pMobileScan->m_bIsInTrans = false;
+                pMobileScan->HidePic();
             }
-
+            pMobileScan->m_bIsBusy = false;
+            pthread_mutex_unlock(&pMobileScan->m_EvenThreadMutex);
         }
         if(!sem_trywait(&pMobileScan->m_FailureSem))
         {
+            pMobileScan->m_bIsBusy = true;
             pMobileScan->m_TextShow->append("m_FailureSem");
+            pMobileScan->m_stTranInfo.iTransCount = 0;
+            strcpy(pMobileScan->m_stTranInfo.szEndDate,QDateTime::currentDateTime().toString("yyyyMMdd").toStdString().c_str());
+            strcpy(pMobileScan->m_stTranInfo.szEndTime,QDateTime::currentDateTime().toString("hhmmss").toStdString().c_str());
+            pMobileScan->m_MobileScan->confirmPayment((void*)&pMobileScan->m_stTranInfo);
+            pMobileScan->m_bIsBusy = false;
+            pMobileScan->m_bIsInTrans = false;
+            pMobileScan->HidePic();
         }
     }
     pMobileScan->m_bThreadExit  = true;
     return NULL;
+}
+
+void CMobileScan::HidePic()
+{
+    m_AliPay->hide();
+    m_QRCodeLabel->hide();
+    m_WechatPay->hide();
+}
+
+CMobileScan::~CMobileScan()
+{
+    if(m_bIsConnet)
+       m_MobileScan->Disconnect();
+
+    if(m_bThread)
+    {
+        m_bThread = false;
+        while(!m_bThreadExit)
+        {
+            usleep(300);
+        }
+        void * pThread_exit;
+        pthread_join(m_EventThreadId,&pThread_exit);
+        pthread_mutex_destroy(&m_EvenThreadMutex);
+    }
+    delete m_ConnetBtn;
+    delete m_DisconnetBtn;
+    delete m_PaymentBeginBtn;
+    delete m_CancelPaymentBtn;
+    delete m_GetStatusBtn;
+    delete m_PayMethodLabel;
+    delete m_EndStationLabel;
+    delete m_PriceLabel;
+    delete m_TicketCountLabel;
+    delete m_TicketOutLabel;
+    delete m_PayMethodEdit;
+    delete m_EndStationEdit;
+    delete m_PriceEdit;
+    delete m_TicketCountEdit;
+    delete m_TicketOutEdit;
+    delete m_TextShow;
+    delete m_QRCodeLabel;
+    delete m_AliPay;
+    delete m_WechatPay;
+}
+
+void CMobileScan::InitWidgets()
+{
+    int iLeft = 0, iTop = 0;
+    m_ConnetBtn = new QPushButton(this);
+    m_ConnetBtn->setText("连接");
+    m_ConnetBtn->setGeometry(iLeft,iTop,50,30);
+    iLeft += 50;
+    m_GetStatusBtn = new QPushButton(this);
+    m_GetStatusBtn->setText("状态");
+    m_GetStatusBtn->setGeometry(iLeft,iTop,50,30);
+    iLeft += 50;
+    m_DisconnetBtn = new QPushButton(this);
+    m_DisconnetBtn->setText("断开连接");
+    m_DisconnetBtn->setGeometry(iLeft,iTop,100,30);
+    iLeft += 100;
+    m_PaymentBeginBtn = new QPushButton(this);
+    m_PaymentBeginBtn->setText("交易开始");
+    m_PaymentBeginBtn->setGeometry(iLeft,iTop,100,30);
+    iLeft += 100;
+    m_CancelPaymentBtn = new QPushButton(this);
+    m_CancelPaymentBtn->setText("取消交易");
+    m_CancelPaymentBtn->setGeometry(iLeft,iTop,100,30);
+
+    m_TextShow = new QTextEdit(this);
+    m_TextShow->setGeometry(400,0,400,400);
+
+    QRegExp regExp("([1-2]{1}$)");
+
+    iLeft = 0;
+    iTop += 40;
+    m_PayMethodEdit = new QLineEdit(this);
+    m_PayMethodEdit->setText("2");
+    m_PayMethodEdit->setGeometry(iLeft,iTop,50,30);
+    m_PayMethodEdit->setValidator(new QRegExpValidator(regExp, this));
+
+    iTop += 30;
+//    m_StartStationEdit = new QLineEdit(this);
+//    m_StartStationEdit->setGeometry(iLeft,iTop,50,30);
+//    iTop += 30;
+    m_EndStationEdit = new QLineEdit(this);
+    m_EndStationEdit->setGeometry(iLeft,iTop,50,30);
+    iTop += 30;
+    m_PriceEdit = new QLineEdit(this);
+    m_PriceEdit->setText("200");
+    m_PriceEdit->setGeometry(iLeft,iTop,50,30);
+    iTop += 30;
+    m_TicketCountEdit = new QLineEdit(this);
+    m_TicketCountEdit->setText("1");
+    m_TicketCountEdit->setGeometry(iLeft,iTop,50,30);
+    iTop += 30;
+    m_TicketOutEdit = new QLineEdit(this);
+    m_TicketOutEdit->setText("1");
+    m_TicketOutEdit->setGeometry(iLeft,iTop,50,30);
+
+    iLeft = 50;
+    iTop = 40;
+    m_PayMethodLabel = new QLabel(this);
+    m_PayMethodLabel->setText("支付方式(1:微信2:支付宝)");
+    m_PayMethodLabel->setGeometry(iLeft,iTop,200,30);
+    iTop += 30;
+    m_EndStationLabel = new QLabel(this);
+    m_EndStationLabel->setText("终点站");
+    m_EndStationLabel->setGeometry(iLeft,iTop,200,30);
+    iTop += 30;
+    m_PriceLabel = new QLabel(this);
+    m_PriceLabel->setText("票价");
+    m_PriceLabel->setGeometry(iLeft,iTop,200,30);
+    iTop += 30;
+    m_TicketCountLabel = new QLabel(this);
+    m_TicketCountLabel->setText("张数");
+    m_TicketCountLabel->setGeometry(iLeft,iTop,200,30);
+
+    iTop += 30;
+    m_TicketOutLabel = new QLabel(this);
+    m_TicketOutLabel->setText("实际出票张数");
+    m_TicketOutLabel->setGeometry(iLeft,iTop,200,30);
+
+    m_PixMap.load(ALIPAY);
+    m_AliPay = new QLabel(this);
+    m_AliPay->setGeometry(280,280,40,40);
+    m_PixMap = m_PixMap.scaled(m_AliPay->width(),m_AliPay->height(),Qt::KeepAspectRatio);
+    m_AliPay->setPixmap(m_PixMap);
+    m_AliPay->hide();
+
+    m_PixMap.load(WECHATPAY);
+    m_WechatPay = new QLabel(this);
+    m_WechatPay->setGeometry(280,280,40,40);
+    m_PixMap = m_PixMap.scaled(m_AliPay->width(),m_AliPay->height(),Qt::KeepAspectRatio);
+    m_WechatPay->setPixmap(m_PixMap);
+    m_WechatPay->hide();
+
+    m_QRCodeLabel = new QLabel(this);
+    m_QRCodeLabel->setGeometry(200,200,200,200);
 }
 

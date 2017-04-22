@@ -6,17 +6,26 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QTextEdit>
+#include <QPixmap>
 
 #include "CLogOper2.h"
 #include "MobileScanCommonFunc.h"
 #include "MobileScanPayCommonDef.h"
 #include "IWebPayEvenHandler.h"
+#include "qrcodecreate.h"
+#include "qrencode.h"
+
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
+#define FILEPATH "/root/johnson/MobileScan/MobileScanDemo/Pic"
+#define FILENAME "PayInfo.bmp"
+
+#define ALIPAY "/root/johnson/MobileScan/MobileScanDemo/Pic/alipay.png"
+#define WECHATPAY "/root/johnson/MobileScan/MobileScanDemo/Pic/wechat.png"
 
 class CMobileScan : public QWidget ,public CIWebPayEvenHandler
 {
@@ -34,6 +43,7 @@ public:
     bool m_bIsConnet;
     bool m_bIsInit;
     bool m_bIsInTrans;
+    bool m_bIsBusy;
 
     int m_iNeedPayAmount;
 private:
@@ -82,10 +92,18 @@ private:
     QLabel *m_TicketOutLabel;          //实际出票张数
     QLineEdit *m_TicketOutEdit;
 
+    QLabel *m_QRCodeLabel;              //二维码展示
+    QLabel *m_AliPay;
+    QLabel *m_WechatPay;
+
+    QPixmap m_PixMap;
+
     QTextEdit *m_TextShow;
 
 private:
     void InitWidgets();
+
+    void HidePic();
 
 protected:
     void QRCodeDataNotify(const void * pData);
@@ -98,7 +116,10 @@ public slots:
     void on_click_PaymentBegin_Btn();
     void on_click_CancelPayment_Btn();
     void on_click_GetStatus_Btn();
+    void create_QRCode_and_Show();
 
+signals:
+    void New_QRCode_has_Created();
 };
 
 #endif // MOBILESCAN_H

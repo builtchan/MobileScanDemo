@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
   QApplication a(argc, argv);
   CMobileScan w;
   w.show();
+  w.move(300,200);
 
   return a.exec();
 }
